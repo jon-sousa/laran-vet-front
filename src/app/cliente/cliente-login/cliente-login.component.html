@@ -1,0 +1,11 @@
+<form #formulario="ngForm" (ngSubmit)="onSubmit()" method="post" class="form container w-50 mt-3">
+  <h3>Login</h3>
+  <div class="form-group mt-3">
+    <input [(ngModel)]="email"  #formEmail="ngModel" type="email" name="email" id="" class="form-control" placeholder="email" required/>
+  </div>
+  <div class="form-group mt-3">
+    <input [(ngModel)]="senha"  #formSenha="ngModel" type="password" name="senha" id="" class="form-control" placeholder="senha" required/>
+  </div>
+  <a [routerLink]="['/cliente/cadastrar']" class="link-primary d-block end-0 mt-2">Não possui cadastro?</a>
+  <button [disabled]="!formulario.form.valid" type="submit" class="btn btn-success mt-3">Entrar</button>
+</form>

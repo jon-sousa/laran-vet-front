@@ -1,0 +1,10 @@
+<div *ngIf="consulta" class="card">
+    <h5 class="card-title ms-3 mt-3">{{consulta.relato}}</h5>
+    <div class="card-body">
+        <p>Pagamento: {{consulta.pago == true ? 'Pago': 'Não pago'}}</p>
+        <p>Estado: {{consulta.concluido == true ? 'Concluido' : 'Não concluído'}}</p>
+        <p>Taxa: {{consulta.taxa}}</p>
+        <p *ngIf="consulta.resposta"><strong>Resposta: </strong>{{consulta.resposta}}</p>
+        <button (click)="pagar()" *ngIf="consulta.pago == false" class="btn btn-danger">Pagar</button>
+    </div>
+</div>

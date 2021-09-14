@@ -1,0 +1,11 @@
+<h4 class='text-center mt-3'>Consultas</h4>
+
+<div class="w-75 container" *ngIf="pets">
+    <div class="mb-3" *ngFor="let pet of pets">
+        <h6>{{pet.nome}}</h6>
+        <div *ngFor="let consulta of pet.consultas">
+            <app-consulta [consulta]="consulta"></app-consulta>
+        </div>
+        <div class="alert alert-danger" *ngIf="!pet.consultas?.length">Sem consulta cadastrada</div>
+    </div>
+</div>

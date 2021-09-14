@@ -1,0 +1,14 @@
+<form #formulario="ngForm" method="post" class="form container w-50 mt-3">
+    <h3>Consulta</h3>
+    <div class="form-group mt-3">
+      <label for="taxa" class="form-label">Oferte uma preço para a consulta</label>
+      <input (keyup)="formatarValor($event)" [(ngModel)]="taxa" type="text" name="" id="taxa" name="taxa" class="form-control" required>
+    </div>
+    <div class="form-group mt-3">
+      <textarea #relatoInput="ngModel" [(ngModel)]="relato"  #formEmail="ngModel" name="relato" id="" class="form-control" placeholder="Descreva os sintomas..." required></textarea>
+    </div>
+    <button (click) = "salvar()" [disabled]="relatoInput.invalid" class="btn btn-success mt-3 me-3">Salvar</button>
+    <button (click) = "salvarPagar()" [disabled]="relatoInput.invalid" name="salvar-pagar" class="btn btn-success mt-3 me-3"> Salvar e Pagar </button>
+    <button (click)="cancelar()" class="btn btn-danger mt-3 me-3">Cancelar</button>
+</form>
+  

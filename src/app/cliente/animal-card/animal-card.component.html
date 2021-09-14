@@ -1,0 +1,10 @@
+<div *ngIf="animal" class="card col">
+  <div class="card-header">
+    {{ animal.tipo }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ animal.nome }}</h5>
+    <p>{{ animal.raca }}</p>
+    <a [routerLink]="['/cliente/pet-area', animal.id]" class="btn btn-primary">Expandir</a>
+  </div>
+</div>

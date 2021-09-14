@@ -1,0 +1,15 @@
+<form #formulario="ngForm" (ngSubmit)="onSubmit()" method="post" class="form container w-50 mt-3">
+    <h3>Cadastro</h3>
+    <div class="form-group mt-3">
+      <input [(ngModel)]="nome"  #formEmail="ngModel" type="text" name="nome" id="" class="form-control" placeholder="nome" required/>
+    </div>
+    <div class="form-group mt-3">
+      <input [(ngModel)]="email"  #formEmail="ngModel" type="email" name="email" id="" class="form-control" placeholder="email" required/>
+    </div>
+    <div class="form-group mt-3">
+      <input [(ngModel)]="senha"  #formSenha="ngModel" type="password" name="senha" id="" class="form-control" placeholder="senha" required/>
+    </div>
+    <a [routerLink]="['/cliente/login']" class="link-primary d-block mt-2">Já possui cadastro?</a>
+    <button [disabled]="!formulario.form.valid" type="submit" class="btn btn-success mt-3">Cadastro</button>
+</form>
+  

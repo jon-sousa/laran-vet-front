@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vet-front",
+            "outputPath": "dist/angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,16 +27,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "600kb",
                   "maximumError": "1mb"
                 },
                 {
@@ -51,9 +54,14 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "outputPath": "../../../public/assets/angular",
+              "deployUrl": "/assets/angular/",
+              "baseHref": "/assets/angular/",
               "outputHashing": "all"
             },
             "development": {
+              "outputPath": "dist/assets/angular",
+              "baseHref": "/assets/angular/",
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -71,7 +79,8 @@
               "browserTarget": "vet-front:build:production"
             },
             "development": {
-              "browserTarget": "vet-front:build:development"
+              "browserTarget": "vet-front:build:development",
+              "proxyConfig": "src/proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"

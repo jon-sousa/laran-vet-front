@@ -1,0 +1,33 @@
+<main class="container">
+    <h2>{{pet.nome}}</h2>
+    <div class="mt-4">
+        <h4>Consultas</h4>
+        <div *ngFor="let consulta of pet.consultas">
+            <app-consulta [consulta]="consulta"></app-consulta>
+        </div>
+        <div *ngIf="!pet.consultas.length" class="alert alert-danger mt-3">Sem consultas realizadas</div>
+    </div>
+    <div class="mt-4">
+        <h4>Vacinas</h4>
+        <table *ngIf="pet.vacinas.length" class="table table-striped">
+            <thead>
+                <th scope="row"></th>
+                <tr>
+                    <th scope="col">Doença</th>
+                    <th scope="col">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vacina of pet.vacinas">
+                  <td>{{vacina.doenca}}</td>
+                  <td>{{vacina.data | date:"dd/MM/yy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="!pet.vacinas.length" class="alert alert-danger mt-3">Sem vacinas realizadas</div>    
+    </div>
+    <div class="mt-4 mb-4">
+        <a [routerLink] = "['/cliente/agendar-consulta', pet.id]" class="btn btn-primary me-3">Cadastre uma consulta</a>
+        <a [routerLink] = "['/cliente/agendar-vacina', pet.id]" class="btn btn-primary">Agende vacinação</a>
+    </div>
+</main>

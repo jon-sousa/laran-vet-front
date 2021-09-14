@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" method="post" class="form container w-50 mt-3" #formulario="ngForm">
+    <h3>Agende a vacina de seu pet!</h3>
+    <select [(ngModel)]="vacina" name="tipo" class="form-select mt-3">
+        <option selected value="trivalente">trivalente</option>
+        <option value="tetravalente ">tetravalente </option>
+        <option value="polivalente ">polivalente </option>
+        <option value="pentavalente">pentavalente</option>
+        <option value="hexavalente">hexavalente</option>
+        <option value="octovalente">octovalente</option>
+        <option value="leishmaniose">leishmaniose</option>
+    </select>
+    <div class="form-group mt-3">
+        <input [(ngModel)]="data"  #formRaca="ngModel" type="date" name="data" id="data" class="form-control"required/>
+    </div>
+    <button [disabled]="!formulario.form.valid" type="submit" class="btn btn-success mt-3 me-3">Agendar</button>
+    <button (click)="cancelar()" class="btn btn-danger mt-3 me-3">Cancelar</button>
+</form>

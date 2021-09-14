@@ -1,0 +1,18 @@
+<form #formulario="ngForm" (ngSubmit)="onSubmit()" method="post" class="form container w-50 mt-3">
+    <h3>Cadastre seu pet!</h3>
+    <div class="form-group mt-3">
+        <input [(ngModel)]="nome"  #formEmail="ngModel" type="text" name="nome" id="nome" class="form-control" placeholder="nome" required/>
+    </div>
+    <select [(ngModel)]="tipo" name="tipo" class="form-select mt-3">
+        <option selected value="cachorro">Cachorro</option>
+        <option value="gato">Gato</option>
+        <option value="passarinho">Passarinho</option>
+        <option value="roedor">Roedor</option>
+        <option value="outro">Outro</option>
+    </select>
+    <div class="form-group mt-3">
+        <input [(ngModel)]="raca"  #formRaca="ngModel" type="text" name="raca" id="raca" class="form-control" placeholder="Raça" required/>
+    </div>
+    <button [disabled]="!formulario.form.valid" type="submit" class="btn btn-success mt-3">Cadastrar</button>
+</form>
+  

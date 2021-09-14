@@ -1,0 +1,21 @@
+<h4 class="text-center mt-3">Vacinas</h4>
+
+<div class="w-75 container" *ngFor="let pet of pets">
+    <h5>{{pet.nome}}</h5>
+    <table *ngIf="pet.vacinas?.length" class="table table-striped">
+        <thead>
+            <th scope="row"></th>
+            <tr>
+                <th scope="col">Doença</th>
+                <th scope="col">Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vacina of pet.vacinas">
+                <td>{{vacina.doenca}}</td>
+                <td>{{vacina.data | date:"dd/MM/yy"}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="!pet.vacinas?.length" class="alert alert-danger">Sem vacina cadastrada</div>
+</div>
