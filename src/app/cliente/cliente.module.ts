@@ -17,6 +17,7 @@ import { ConsultaComponent } from './consulta/consulta.component';
 import { ConsultaAgendarComponent } from './consulta-agendar/consulta-agendar.component';
 import { VacinaAgendarComponent } from './vacina-agendar/vacina-agendar.component';
 import { VacinasComponent } from './vacinas/vacinas.component';
+import { AnimalAlterarComponent } from './animal-alterar/animal-alterar.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { VacinasComponent } from './vacinas/vacinas.component';
     ConsultaComponent,
     ConsultaAgendarComponent,
     VacinaAgendarComponent,
-    VacinasComponent
+    VacinasComponent,
+    AnimalAlterarComponent
   ],
   imports: [
     CommonModule,

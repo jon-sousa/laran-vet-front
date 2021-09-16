@@ -13,12 +13,12 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.imgs = [
-      "assets/img/alergia.jpg",
-      "assets/img/depressao.jpg",
-      "assets/img/carrapato.jpg",
-      "assets/img/insuficienciarenal.jpg",
-      "assets/img/obsidade.jpg",
-      "assets/img/otite.jpg"
+      "./assets/img/alergia.jpg",
+      "./assets/img/depressao.jpg",
+      "./assets/img/carrapato.jpg",
+      "./assets/img/insuficienciarenal.jpg",
+      "./assets/img/obsidade.jpg",
+      "./assets/img/otite.jpg"
     ]
   }
 

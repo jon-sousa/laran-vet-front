@@ -11,6 +11,8 @@ export class ClienteLoginComponent implements OnInit {
 
   email:string
   senha:string
+  credenciaisIncorretas:boolean = false
+  erroRequisicao:boolean = false
 
   constructor(
     private autenticacaoClienteService: AutenticacaoClienteService,
@@ -29,10 +31,20 @@ export class ClienteLoginComponent implements OnInit {
   }
 
   onSubmit(){
+    this.erroRequisicao = false
+    this.credenciaisIncorretas = false
+
     this.autenticacaoClienteService.login({'email': this.email, 'password': this.senha})
       .subscribe(
-        response => {console.log('certinho: \n'), console.log(response); this.router.navigate(['/cliente'])},
-        erro => { console.log('Erro:\n'); console.log(erro)}
+        response => {this.router.navigate(['/cliente'])},
+        erro => { 
+          if(erro.status === 403){
+            this.credenciaisIncorretas = true
+          }
+          else{
+            this.erroRequisicao = true
+          }
+        }
       )
   }
 

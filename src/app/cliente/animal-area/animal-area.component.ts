@@ -9,11 +9,12 @@ import { Animal } from '../animal';
   styleUrls: ['./animal-area.component.css']
 })
 export class AnimalAreaComponent implements OnInit {
-  pet?: any
+  pet?: Animal
 
   constructor(
     private animaisClienteService: AnimaisClientesService,
-    private route: ActivatedRoute  
+    private route: ActivatedRoute,
+    private router: Router  
   ) { }
 
   ngOnInit(): void {
@@ -21,9 +22,33 @@ export class AnimalAreaComponent implements OnInit {
     if(id){
       this.animaisClienteService.buscarUm(id)
         .subscribe(
-          res => {console.log(res); this.pet = res},
+          res => {this.pet = res},
           erro => console.log(erro)
       )
+    }
+  }
+
+  alterar($event: any){
+    this.animaisClienteService.alterar($event)
+      .subscribe(
+        res =>{ 
+          if(this.pet != undefined){
+            this.pet.nome = res.nome
+            this.pet.tipo = res.tipo
+            this.pet.raca = res.raca
+          }
+        },
+        erro => console.error(erro)
+      )
+  }
+
+  deletar(){
+    if(this.pet != undefined){  
+      this.animaisClienteService.deletar(this.pet.id as number)
+        .subscribe(
+          () => this.router.navigate(['/cliente/pets']),
+          erro => console.error(erro)
+        )
     }
   }
 

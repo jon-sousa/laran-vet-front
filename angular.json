@@ -24,6 +24,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ],
             "styles": [
@@ -56,12 +57,9 @@
               ],
               "outputPath": "../../../public/assets/angular",
               "deployUrl": "/assets/angular/",
-              "baseHref": "/assets/angular/",
               "outputHashing": "all"
             },
             "development": {
-              "outputPath": "dist/assets/angular",
-              "baseHref": "/assets/angular/",
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,

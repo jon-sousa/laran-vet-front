@@ -1,15 +1,47 @@
 <main class="container">
-    <h2>{{pet.nome}}</h2>
+    <div class="d-flex justify-content-between mt-3">
+        <h2>{{pet?.nome}}</h2>
+        <div>
+            <app-animal-alterar [pet] = "pet" (aoAlterar) = "alterar($event)"></app-animal-alterar>
+
+            
+<button type="button" class="ms-3 btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletarModal">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+    </svg>
+  </button>
+  <div class="modal fade" id="deletarModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Excluir</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <main class="container mt-3">
+                  <p>Tem certeza que quer excluir o cadastro de seu pet?</p>
+              </main>
+                
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" (click)="deletar()" class="btn btn-primary" data-bs-dismiss="modal">Deletar</button>
+          </div>
+        </div>
+      </div>
+  </div>
+        </div>
+    </div>
     <div class="mt-4">
         <h4>Consultas</h4>
-        <div *ngFor="let consulta of pet.consultas">
+        <div *ngFor="let consulta of pet?.consultas">
             <app-consulta [consulta]="consulta"></app-consulta>
         </div>
-        <div *ngIf="!pet.consultas.length" class="alert alert-danger mt-3">Sem consultas realizadas</div>
+        <div *ngIf="!pet?.consultas?.length" class="alert alert-danger mt-3">Sem consultas realizadas</div>
     </div>
     <div class="mt-4">
         <h4>Vacinas</h4>
-        <table *ngIf="pet.vacinas.length" class="table table-striped">
+        <table *ngIf="pet?.vacinas?.length" class="table table-striped">
             <thead>
                 <th scope="row"></th>
                 <tr>
@@ -18,16 +50,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let vacina of pet.vacinas">
+                <tr *ngFor="let vacina of pet?.vacinas">
                   <td>{{vacina.doenca}}</td>
                   <td>{{vacina.data | date:"dd/MM/yy"}}</td>
                 </tr>
             </tbody>
         </table>
-        <div *ngIf="!pet.vacinas.length" class="alert alert-danger mt-3">Sem vacinas realizadas</div>    
+        <div *ngIf="!pet?.vacinas?.length" class="alert alert-danger mt-3">Sem vacinas realizadas</div>    
     </div>
     <div class="mt-4 mb-4">
-        <a [routerLink] = "['/cliente/agendar-consulta', pet.id]" class="btn btn-primary me-3">Cadastre uma consulta</a>
-        <a [routerLink] = "['/cliente/agendar-vacina', pet.id]" class="btn btn-primary">Agende vacinação</a>
+        <a [routerLink] = "['/cliente/agendar-consulta', pet?.id]" class="btn btn-primary me-3">Cadastre uma consulta</a>
+        <a [routerLink] = "['/cliente/agendar-vacina', pet?.id]" class="btn btn-primary">Agende vacinação</a>
     </div>
 </main>
